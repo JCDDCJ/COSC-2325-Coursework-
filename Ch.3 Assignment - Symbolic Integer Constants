@@ -1,38 +1,33 @@
-;Symbolic Integer Constants
-;Jeff Davis 
+;SymbolcIntegerConstants.asm - 
+;Jeff Davis
 ;Computer Organization
 ;COSC 2325 2801
-;10/11/17
+;10/14/17
 ;Write a program that defines symbolic constants for all seven days of the week.
 ;Create an array variable that uses the symbols as initalizers. 
 
-INCLUDE \masm32\include\masm32rt.inc
-INCLUDE \masm32\include\Irvine32.inc
-INCLUDELIB \masm32\lib\Irvine32.lib
-INCLUDE \masm32\include\debug.inc
-INCLUDELIB \masm32\lib\debug.lib
-.486
-;.model flat, stdcall
-.stack 1000h
-ExitProcess PROTO, DwErrorCode:DWORD
-WriteHex PROTO
-Crlf PROTO
-;Write a program that defines symbolic constants for all seven days of week.
-;Create an array variable that uses the symbols as initializers.
-;Dump the memory.
-SUN = 0
-MON = 1
-TUE = 2
-WED = 3
-THU = 4
-FRI = 5
-SAT = 6
+INCLUDE Irvine32.inc
+.386
+.model flat, stdcall
+.stack 4096
+;ExitProcess proto, dwExitCode:dword
+
+sun = 0
+mon = 1
+tue = 2
+wed = 3
+thu = 4
+fri = 5
+sat = 6
+
 .data
-daysArray BYTE SUN,MON,TUE,WED,THU,FRI,SAT
+	dayArray BYTE sun, mon, tue, wed, thu, fri, sat
 .code
-Call WriteHex
-main PROC
-inkey ; then console build should be performed
-INVOKE ExitProcess, 0
-main ENDP
-END main
+
+main proc
+	
+	
+	call DumpRegs
+	invoke ExitProcess,0
+main endp
+end main
